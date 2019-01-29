@@ -1,6 +1,17 @@
+//var mongoose = require('mongoose');
+
+//mongoose.Promise = global.Promise;
+//mongoose.connect(process.env.MONGODB_URI);
+//mongoose.connect(config.DB,{ useMongoClient:true });
+//module.exports = {mongoose};
+
+
 var mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI);
-//mongoose.connect(config.DB,{ useMongoClient:true });
+mongoose.Promisse = global.Promise;
+mongoose.set('useCreateIndex', true);       //https://stackoverflow.com/questions/51916630/mongodb-mongoose-collection-find-options-deprecation-warning
+mongoose.set('useFindAndModify', false);    //https://github.com/Automattic/mongoose/issues/6880
+mongoose.connect(process.env.MONGODB_URI
+                ,{ useNewUrlParser: true }  //https://stackoverflow.com/questions/50448272/avoid-current-url-string-parser-is-deprecated-warning-by-setting-usenewurlpars
+);
 module.exports = {mongoose};
